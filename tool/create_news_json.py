@@ -8,7 +8,6 @@ from html.parser import HTMLParser
 '''
 浜松市コロナサイトのお知らせ部分からnews.jsonを作成する
 [浜松市コロナサイト](https://www.city.hamamatsu.shizuoka.jp/koho2/emergency/korona.html)
-
 <div class="outline">
     <ul>
         <li>6月2日
@@ -115,8 +114,13 @@ class NewsParser(HTMLParser):
             data = data.strip()
             if data:
                 m = re.match(r'([0-9]{1,2})月([0-9]{1,2})日', data)
-                month, day = m.groups()
-                self.currentDate = "2020/{}/{}".format(month.zfill(2),day.zfill(2))
+                if m:
+                    month, day = m.groups()
+                    self.currentDate = "2021/{}/{}".format(month.zfill(2),day.zfill(2))
+                else:
+                    m = re.match(r'([0-9]{4})年([0-9]{1,2})月([0-9]{1,2})日', data)
+                    year, month, day = m.groups()
+                    self.currentDate = "{}/{}/{}".format(year, month.zfill(2),day.zfill(2))
             return
 
 def main():
