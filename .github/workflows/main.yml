@@ -35,5 +35,5 @@ jobs:
           ${{ runner.os }}-yarn-
 
     - run: yarn install --frozen-lockfile
-    - run: yarn add pupetter jest-puppeteer
+    - run: yarn add puppeteer jest-puppeteer
     - run: yarn run test:e2e
