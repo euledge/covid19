@@ -26,14 +26,14 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
    
-    - name: Cache dependencies
-      uses: actions/cache@v1
-      with:
-        path: ~/.cache/yarn
-        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-yarn-
+    # - name: Cache dependencies
+    #   uses: actions/cache@v1
+    #   with:
+    #     path: ~/.cache/yarn
+    #     key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+    #     restore-keys: |
+    #       ${{ runner.os }}-yarn-
 
     - run: yarn install --frozen-lockfile
-    - run: yarn add puppeteer jest-puppeteer
+    # - run: yarn add puppeteer jest-puppeteer
     - run: yarn run test:e2e
