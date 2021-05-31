@@ -22,10 +22,24 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Setup Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
    
+    - name: Install dependencies
+      run: |
+          sudo apt-get install xvfb
+          PUPPETEER_PRODUCT=firefox npm install
+          npm install
+          ls .local-chromium .local-firefox
+
+    - name: Build
+      run: |
+          npm run build
+
+    - name: Run test
+      run: npm run test:e2e
+
     # - name: Cache dependencies
     #   uses: actions/cache@v1
     #   with:
@@ -34,6 +48,6 @@ jobs:
     #     restore-keys: |
     #       ${{ runner.os }}-yarn-
 
-    - run: yarn install --frozen-lockfile
+    # - run: yarn install --frozen-lockfile
     # - run: yarn add puppeteer jest-puppeteer
-    - run: yarn run test:e2e
+    # - run: yarn run test:e2e
