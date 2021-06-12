@@ -31,7 +31,7 @@ describe('Index page', () => {
   it('「新型コロナウイルス感染症が心配なときに」ページが表示されること', async () => {
     await Promise.all([
       page.waitForNavigation({ waitUntil: ['load', 'networkidle2'] }),
-      page.click("a[href='/en/flow']")
+      page.click("a[href='/flow']")
     ])
 
     const text = await page.evaluate(() => document.body.textContent)
