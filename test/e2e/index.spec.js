@@ -10,7 +10,7 @@ describe('Index page', () => {
     page = await browser.newPage()
     await page.goto('http://127.0.0.1:3000', {
       waitUntil: 'load',
-      timeout: 0
+      timeout: 60000
     })
   })
 
@@ -31,7 +31,7 @@ describe('Index page', () => {
   it('「新型コロナウイルス感染症が心配なときに」ページが表示されること', async () => {
     await Promise.all([
       page.waitForNavigation({ waitUntil: ['load', 'networkidle2'] }),
-      page.click("a[href='/flow']")
+      page.click("a[href='/en/flow']")
     ])
 
     const text = await page.evaluate(() => document.body.textContent)
