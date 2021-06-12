@@ -6,7 +6,7 @@ describe('Index page', () => {
 
   beforeAll(async () => {
     jest.setTimeout(90000)
-    browser = await puppeteer.launch({ args: ['--lang=ja-JP'] })
+    browser = await puppeteer.launch({ args: ['--lang=ja'] })
     page = await browser.newPage()
     await page.goto('http://127.0.0.1:3000', {
       waitUntil: 'load',
