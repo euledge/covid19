@@ -30,8 +30,8 @@ jobs:
           sudo apt install chromium-browser
           yarn install
 
-    - name: Build
-      run: yarn run build
+#    - name: Build
+#      run: yarn run build
 
     - name: Run test
       run: yarn run test:e2e
