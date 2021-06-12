@@ -1,10 +1,11 @@
 module.exports = {
   launch: {
-    slowMo: 250
+    args: ['--lang=ja'],
+    timeout: 90000
   },
   server: {
     command: 'yarn dev',
     port: 3000,
-    launchTimeout: 60000
+    launchTimeout: 90000
   }
 }
